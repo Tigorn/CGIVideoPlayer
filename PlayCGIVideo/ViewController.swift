@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        videoType.selectedSegmentIndex = 1
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,13 +34,13 @@ class ViewController: UIViewController {
    
     
     
-    
-    //код вязт отсюда http://stackoverflow.com/questions/20282672/record-save-and-or-convert-video-in-mp4-format
+    //==========================   VIDEO CONVERTATION  ==================================================================================
+    //код был вязт отсюда http://stackoverflow.com/questions/20282672/record-save-and-or-convert-video-in-mp4-format
+    //
     
     //videoURL     - передался path NSURL ================================================================
-    func encodeVideo(videoURL: NSURL)  {
+    func encodeVideo(videoURL: NSURL, videoFileName: String!)  {
         let avAsset = AVURLAsset(url: videoURL as URL, options: nil)
-        
         var startDate = NSDate()
         
         //Create Export session
@@ -51,13 +51,13 @@ class ViewController: UIViewController {
         
         //++++ documentsDirectory1+++
         let documentsDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        let myDocumentPath = NSURL(fileURLWithPath: documentsDirectory).appendingPathComponent("temp.mp4")?.absoluteString   //++ "temp.mp4"
+        let myDocumentPath = NSURL(fileURLWithPath: documentsDirectory).appendingPathComponent(videoFileName)?.absoluteString   //++
         let url = NSURL(fileURLWithPath: myDocumentPath!)
         
         //++++ documentsDirectory2+++
         let documentsDirectory2 = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
         
-        let filePath = documentsDirectory2.appendingPathComponent("rendered-Video.mp4")                                      //++ "rendered-Video.mp4"
+        let filePath = documentsDirectory2.appendingPathComponent(GlobalVars.renderedFileFullName)                               //++
         deleteFile(filePath: filePath! as NSURL)
         
         //Check if the file already exists then remove the previous file
@@ -69,9 +69,7 @@ class ViewController: UIViewController {
                 print(error)
             }
         }
-        
-       // url
-        
+
         exportSession!.outputURL = filePath
         exportSession!.outputFileType = AVFileTypeMPEG4
         exportSession!.shouldOptimizeForNetworkUse = true
@@ -80,11 +78,11 @@ class ViewController: UIViewController {
         exportSession?.timeRange = range
         
         exportSession!.exportAsynchronously(completionHandler: {() -> Void in
-            switch exportSession!.status {                             //было self.exportSession!.status   ViewController has no member exportSession
+            switch exportSession!.status {
             case .failed:
                 print("%@", exportSession?.error)
             case .cancelled:
-                print("Export canceled")                             //было self
+                print("Export canceled")
             case .completed:
                 //Video conversion finished
                 var endDate = NSDate()
@@ -92,8 +90,8 @@ class ViewController: UIViewController {
                 var time = endDate.timeIntervalSince(startDate as Date)
                 print(time)
                 print("Successful!")
-                print(exportSession?.outputURL)                     //было self
-                GlobalVars.renderedFileURL = exportSession?.outputURL     //TODO: получил URL отредактированного видео
+                print(exportSession?.outputURL)
+                GlobalVars.renderedFileURL = exportSession?.outputURL
                 
             default:
                 break
@@ -115,25 +113,25 @@ class ViewController: UIViewController {
             fatalError("Unable to delete file: \(error) : \(#function).")
         }
     }//=========================================================================================
+    //=======================================END OF VIDEO CONVERTATION ======================================================================================
     
     
     
     
     
+ 
     
-    
-    //playVideoView(videoFileURL: URL!)
-    
-    
+    ///=============================== ТРИ КНОПКИ =========================================================================================================
     @IBAction func convertButtonTapped(_ sender: AnyObject) {
         print("Try to convert initial video!...")
         if (videoType.selectedSegmentIndex == 0)
         {
             //***    А это тот файл, который и нужно перекодировать - VIDEO.CGI -
             //***    Так как AVKit'у нельзя скормить тип ресурса CGI я поставил расширения файла MP4
-            let path = Bundle.main.path(forResource: GlobalVars.originalVideoFileName, ofType: GlobalVars.originalVideoFileExtension)!
+            let path = Bundle.main.path(forResource: GlobalVars.videoFileName[0], ofType: GlobalVars.videoFileExtension[0])!
             let pathURL = NSURL(fileURLWithPath: path)
-            encodeVideo(videoURL: pathURL)
+            let videoFileFullName = "/(GlobalVars.videoFileName[0])./(GlobalVars.videoFileExtension[0])"
+            encodeVideo(videoURL: pathURL, videoFileName: videoFileFullName)        //******  ВОТ НАШ ВЫЗОВ ФУНЦИИ ПЕРЕКОДИРОВКИ ВИДЕО
             print("videoURL = \t \(pathURL)")
             print("Rendered File  == \(GlobalVars.renderedFileURL)")
         }
@@ -141,15 +139,17 @@ class ViewController: UIViewController {
         {
             //***     для пример, я загрузил еще заведомо нормальный MP4 файл, который разумеется спокойно проигрывается
             //***    в исходном состоянии, перекодируется и успешно пригрывается при перекодировке
-            let path = Bundle.main.path(forResource: "temp", ofType: "mp4")!
+            let path = Bundle.main.path(forResource: GlobalVars.videoFileName[1], ofType: GlobalVars.videoFileExtension[1])!
             let pathURL = NSURL(fileURLWithPath: path)
-            encodeVideo(videoURL: pathURL)
+            let videoFileFullName = "/(GlobalVars.videoFileName[1])./(GlobalVars.videoFileExtension[1])"
+            encodeVideo(videoURL: pathURL, videoFileName: videoFileFullName)
+            encodeVideo(videoURL: pathURL, videoFileName: videoFileFullName)        //******  ВОТ НАШ ВЫЗОВ ФУНЦИИ ПЕРЕКОДИРОВКИ ВИДЕО
             print("videoURL = \t \(pathURL)")
             print("Rendered File  == \(GlobalVars.renderedFileURL)")
         }
     }
     
-  
+    //ПРОИГРЫВАНИЕ ОТКОНВЕРТИРОВАННОГО ВИДЕО - "rendered-file.mp4"  КОТОРОЕ БЫЛО СОХАРНЕНО, ЕСЛИ НЕ NIL (операция конвератции прошла успешно)
     @IBAction func playRenderedFileButtonTapped(_ sender: AnyObject) {
         if GlobalVars.renderedFileURL != nil {
             print("Now play rendered video")
@@ -159,12 +159,13 @@ class ViewController: UIViewController {
         }
     }
     
+    //ПРОИГРЫВАНИЕ ОРИГИНАЛЬНОГО ВИДЕО - ТО ЕСТЬ ТЕХ 2 ФАЙЛОВ ЧТО БЫЛИ СОХРАНЕНЫ В ПРОЕКТЕ  badVideo.mp4 + justForExampleVideo.mp4
     @IBAction func playButtonTapped(_ sender: AnyObject) {
         if (videoType.selectedSegmentIndex == 0)
         {
             //***    А это тот файл, который и нужно перекодировать - VIDEO.CGI -
             //***    Так как AVKit'у нельзя скормить тип ресурса CGI я поставил расширения файла MP4
-            let path = Bundle.main.path(forResource: GlobalVars.originalVideoFileName, ofType: GlobalVars.originalVideoFileExtension)!
+            let path = Bundle.main.path(forResource: GlobalVars.videoFileName[0], ofType: GlobalVars.videoFileExtension[0])!
             print("Try to play original file \(path)")
             let pathURL = NSURL(fileURLWithPath: path)   //TODO: NSURL(fileURLWithPath: path)    not     NSURL(string: path)
             playVideoView(videoFileURL: pathURL)
@@ -173,12 +174,13 @@ class ViewController: UIViewController {
         {
             //***     для пример, я загрузил еще заведомо нормальный MP4 файл, который разумеется спокойно проигрывается
             //***    в исходном состоянии, перекодируется и успешно пригрывается при перекодировке
-            let path = Bundle.main.path(forResource: "temp", ofType: "mp4")!
+            let path = Bundle.main.path(forResource: GlobalVars.videoFileName[1], ofType: GlobalVars.videoFileExtension[1])!
             print("Try to play original file \(path)")
             let pathURL = NSURL(fileURLWithPath: path)   //TODO: NSURL(fileURLWithPath: path)    not     NSURL(string: path)
             playVideoView(videoFileURL: pathURL)
         }
     }
+    //======================================================================================================================================================
     
     
     
@@ -189,8 +191,7 @@ class ViewController: UIViewController {
     
     
     
-    
-    //==== ИЗ ПРИМЕРА ПРО КОЛЬЦЕВОЕ ПРОИГРЫВНАИЕ ВИДЕО =================================================================================================================
+    //============================= БЛОК ПРОИГРЫВАНИЯ ВИДЕО ==================================================================================================
     func playVideoView(videoFileURL: NSURL!) {
         //===показать вью=====
        setUpLayer2()
@@ -207,7 +208,6 @@ class ViewController: UIViewController {
         // НОВЫЙ СИНТАКСИС РАБОТЫ С Notification servioce
         // http://stackoverflow.com/questions/38204703/notificationcenter-issue-on-swift-3
         NotificationCenter.default.addObserver(self, selector: #selector(videoDidPlayToEnd), name: NSNotification.Name(rawValue: "AVPlayerItemDidPlayToEndTimeNotification"), object: player.currentItem)
-        
     }
     
     

@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PlayCGIVideo/ViewController.swift"
-            timestampString = "496372301.416994"
+            timestampString = "496374978.682437"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "encodeVideo(videoURL:)"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "encodeVideo(videoURL:videoFileName:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PlayCGIVideo/ViewController.swift"
-            timestampString = "496372301.416994"
+            timestampString = "496374978.682437"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "playButtonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PlayCGIVideo/ViewController.swift"
-            timestampString = "496372301.416994"
+            timestampString = "496374978.682437"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "playVideoView(videoFileURL:)"
             landmarkType = "7">
          </BreakpointContent>

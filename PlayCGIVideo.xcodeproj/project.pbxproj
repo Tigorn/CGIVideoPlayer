@@ -12,8 +12,8 @@
 		610F9F801D95D4A3009DB43C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 610F9F7E1D95D4A3009DB43C /* Main.storyboard */; };
 		610F9F821D95D4A3009DB43C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 610F9F811D95D4A3009DB43C /* Assets.xcassets */; };
 		610F9F851D95D4A3009DB43C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 610F9F831D95D4A3009DB43C /* LaunchScreen.storyboard */; };
-		610F9F8D1D95D4CF009DB43C /* loadfile.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 610F9F8C1D95D4CF009DB43C /* loadfile.mp4 */; };
-		610F9F8F1D95DBB2009DB43C /* temp.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 610F9F8E1D95DBB2009DB43C /* temp.mp4 */; };
+		610F9F8D1D95D4CF009DB43C /* badVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 610F9F8C1D95D4CF009DB43C /* badVideo.mp4 */; };
+		610F9F8F1D95DBB2009DB43C /* justForExampleVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 610F9F8E1D95DBB2009DB43C /* justForExampleVideo.mp4 */; };
 		610F9F911D95F43E009DB43C /* GlobalVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610F9F901D95F43E009DB43C /* GlobalVars.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,8 +25,8 @@
 		610F9F811D95D4A3009DB43C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		610F9F841D95D4A3009DB43C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		610F9F861D95D4A3009DB43C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		610F9F8C1D95D4CF009DB43C /* loadfile.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = loadfile.mp4; sourceTree = "<group>"; };
-		610F9F8E1D95DBB2009DB43C /* temp.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = temp.mp4; sourceTree = "<group>"; };
+		610F9F8C1D95D4CF009DB43C /* badVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = badVideo.mp4; sourceTree = "<group>"; };
+		610F9F8E1D95DBB2009DB43C /* justForExampleVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = justForExampleVideo.mp4; sourceTree = "<group>"; };
 		610F9F901D95F43E009DB43C /* GlobalVars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVars.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,8 +67,8 @@
 				610F9F811D95D4A3009DB43C /* Assets.xcassets */,
 				610F9F831D95D4A3009DB43C /* LaunchScreen.storyboard */,
 				610F9F861D95D4A3009DB43C /* Info.plist */,
-				610F9F8E1D95DBB2009DB43C /* temp.mp4 */,
-				610F9F8C1D95D4CF009DB43C /* loadfile.mp4 */,
+				610F9F8E1D95DBB2009DB43C /* justForExampleVideo.mp4 */,
+				610F9F8C1D95D4CF009DB43C /* badVideo.mp4 */,
 			);
 			path = PlayCGIVideo;
 			sourceTree = "<group>";
@@ -105,7 +105,6 @@
 				TargetAttributes = {
 					610F9F761D95D4A2009DB43C = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = JFS8TB5L7H;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -134,9 +133,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				610F9F851D95D4A3009DB43C /* LaunchScreen.storyboard in Resources */,
-				610F9F8D1D95D4CF009DB43C /* loadfile.mp4 in Resources */,
+				610F9F8D1D95D4CF009DB43C /* badVideo.mp4 in Resources */,
 				610F9F821D95D4A3009DB43C /* Assets.xcassets in Resources */,
-				610F9F8F1D95DBB2009DB43C /* temp.mp4 in Resources */,
+				610F9F8F1D95DBB2009DB43C /* justForExampleVideo.mp4 in Resources */,
 				610F9F801D95D4A3009DB43C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,8 +272,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = JFS8TB5L7H;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PlayCGIVideo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.baydevgroup.PlayCGIVideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -286,8 +286,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = JFS8TB5L7H;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PlayCGIVideo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.baydevgroup.PlayCGIVideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
