@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PlayCGIVideo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FKE-nc-Wu6" userLabel="VideoView">
+                                <color key="backgroundColor" red="0.5" green="0.64686451339999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SPt-fR-sGH">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GyP-Qi-yhb">
+                                        <color key="backgroundColor" red="1" green="0.59158381989999997" blue="0.28674997880000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="1Dw-ea-ilh"/>
+                                            <constraint firstAttribute="width" constant="200" id="G54-NV-rkG"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Convert CGI">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="1" green="0.50573305719999995" blue="0.1920157133" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="convertButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R5S-4T-FH3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="D0i-Ty-E6k">
+                                        <color key="backgroundColor" red="1" green="0.59158381989999997" blue="0.28674997880000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="COU-ZE-FAq"/>
+                                            <constraint firstAttribute="width" constant="200" id="wqx-Xz-Uyu"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Play rendered file">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="1" green="0.50573305719999995" blue="0.1920157133" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="playRenderedFileButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XO4-s9-qTz"/>
+                                        </connections>
+                                    </button>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1al-cU-UFD">
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="zVK-j0-wax"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="video.cgi"/>
+                                            <segment title="normal mp4"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.99215686274509807" green="0.59215686274509804" blue="0.29019607843137257" alpha="1" colorSpace="calibratedRGB"/>
+                                    </segmentedControl>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4i-OR-n1b">
+                                        <color key="backgroundColor" red="1" green="0.59158381993615694" blue="0.28674997879940445" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="HFO-7S-BL8"/>
+                                            <constraint firstAttribute="width" constant="200" id="wg6-J8-kka"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Play">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="1" green="0.50573305719999995" blue="0.1920157133" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="playButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ck3-eW-tKE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="o4i-OR-n1b" firstAttribute="top" secondItem="D0i-Ty-E6k" secondAttribute="bottom" constant="25" id="4EI-8i-1yr"/>
+                                    <constraint firstItem="D0i-Ty-E6k" firstAttribute="top" secondItem="GyP-Qi-yhb" secondAttribute="bottom" constant="26" id="ECx-6s-TTh"/>
+                                    <constraint firstItem="D0i-Ty-E6k" firstAttribute="centerX" secondItem="SPt-fR-sGH" secondAttribute="centerX" id="KI3-7w-kSV"/>
+                                    <constraint firstItem="GyP-Qi-yhb" firstAttribute="centerX" secondItem="SPt-fR-sGH" secondAttribute="centerX" id="MIU-fh-6W9"/>
+                                    <constraint firstItem="1al-cU-UFD" firstAttribute="centerX" secondItem="SPt-fR-sGH" secondAttribute="centerX" id="b7J-6i-qG2"/>
+                                    <constraint firstItem="D0i-Ty-E6k" firstAttribute="centerY" secondItem="SPt-fR-sGH" secondAttribute="centerY" id="bN0-6K-F6K"/>
+                                    <constraint firstItem="o4i-OR-n1b" firstAttribute="centerX" secondItem="SPt-fR-sGH" secondAttribute="centerX" id="fTV-E7-Bdy"/>
+                                    <constraint firstItem="GyP-Qi-yhb" firstAttribute="top" secondItem="1al-cU-UFD" secondAttribute="bottom" constant="29" id="t4C-6K-Y9v"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="FKE-nc-Wu6" secondAttribute="trailing" id="1ZD-eJ-ePK"/>
+                            <constraint firstItem="FKE-nc-Wu6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7hz-A0-bdR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SPt-fR-sGH" secondAttribute="trailing" constant="-16" id="94o-CB-tT9"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="SPt-fR-sGH" secondAttribute="bottom" id="Gsj-cq-OHG"/>
+                            <constraint firstItem="FKE-nc-Wu6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ibt-qF-c2e"/>
+                            <constraint firstItem="SPt-fR-sGH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="RNY-lA-0AO"/>
+                            <constraint firstItem="SPt-fR-sGH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="fKd-cF-lFK"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FKE-nc-Wu6" secondAttribute="bottom" id="kg6-Nk-EzX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="videoType" destination="1al-cU-UFD" id="yGo-LT-tRE"/>
+                        <outlet property="videoView" destination="FKE-nc-Wu6" id="02Q-OZ-qK8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+        </scene>
+    </scenes>
+</document>
